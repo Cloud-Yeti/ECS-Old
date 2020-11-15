@@ -3,7 +3,7 @@
 #### Getting Started
   * let's build the docker image locally
     * make app-up
-    * make app-up app=nginx  (will make only ngix up)
+    * make app-up app=nginx  (will make only nginx up)
   * Let's create a repository in ECR
     * make ecr-repo
   * Let's push our image to ECR
