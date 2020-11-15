@@ -2,27 +2,30 @@
 
 #### Getting Started
   * let's build the docker image locally
-    * docker-compose up -d
+    * make app-up
   * Let's create a repository in ECR
-    * aws ecr create-repository --region <region-name> --repository-name <repository-name>
+    * make ecr-repo
+  * Let's push our image to ECR
+    * make push-image
 
-#### Docker useful commands
 
-# List all containers (add -a flag a last of below command to see info about stopped container)
+## Docker useful commands
+
+#### List all containers (add -a flag a last of below command to see info about stopped container)
   * docker ps
 
-# List all the images
+#### List all the images
   * docker images
 
-# Stop all containers
+#### Stop all containers
   * docker stop $(docker ps -aq)
 
-# Remove all containers
+#### Remove all containers
   * docker rm $(docker ps -aq)
 
-# deleting - all stopped containers - all networks not used by at least one container - all dangling images - all dangling build cache
+#### deleting - all stopped containers - all networks not used by at least one container - all dangling images - all dangling build cache
   * docker system prune
 
-# delete all unused images and volumes
+#### delete all unused images and volumes
   * docker system prune --all
 
