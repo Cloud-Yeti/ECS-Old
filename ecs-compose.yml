@@ -1,24 +1,5 @@
-#version: '3.4'
-#services:
-#  nginx: 
-#    image: nginx
-#    container_name: nginx
-#    ports:
-#      - 8000:80
-
 version: '3.4'
 services:
-  nginx:
-    env_file: default.env
-    build:
-      context: ./nginx
-      args:
-        NGINX_VERSION: ${NGINX_VERSION}
-    image: ${REGISTRY_HOST}/${REGISTRY_PREFIX}/nginx:${NGINX_VERSION} 
-    container_name: nginx
-    ports:
-      - 8000:80
-
   wordpress:
     env_file: default.env
     build:
@@ -26,7 +7,6 @@ services:
       args:
         WP_VERSION: ${WP_VERSION}
     image: ${REGISTRY_HOST}/${REGISTRY_PREFIX}/wordpress:${WP_VERSION}
-    container_name: wordpress
     depends_on:
       - mariadb
     environment:
@@ -34,6 +14,12 @@ services:
       - WORDPRESS_DB_PASSWORD=password
     ports:
       - 80:80
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: wordpress
+        awslogs-region: us-east-1
+        awslogs-stream-prefix: wordpress
 
   mariadb:
     env_file: default.env
@@ -41,8 +27,13 @@ services:
       context: ./mariadb
       args:
         MARIA_VERSION: ${MARIA_VERSION}
-    image: ${REGISTRY_HOST}/${REGISTRY_PREFIX}/mariadb:${MARIA_VERSION} 
-    container_name: mariadb
+    image: ${REGISTRY_HOST}/${REGISTRY_PREFIX}/mariadb:${MARIA_VERSION}
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=wordpress
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: mariadb
+        awslogs-region: us-east-1
+        awslogs-stream-prefix: mariadb

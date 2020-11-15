@@ -1,5 +1,5 @@
-ARG NGINX_VERSION
+ARG MARIA_VERSION
 
-FROM nginx:$NGINX_VERSION
+FROM mariadb:$MARIA_VERSION
 
 MAINTAINER Robin Gautam contact@cloudyeti.io
