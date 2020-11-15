@@ -46,4 +46,6 @@
   * Service Discovery uses AWS Cloud Map API actions to manage HTTP and DNS namespaces for your Amazon ECS services.
   * Service Discovery is crutial for all sorts of use case for managing microservices including communication between services in ECS as well as for Blue/Green deployment. 
 
+#### Deploying Docker Containers on AWS
+  * https://docs.docker.com/engine/context/ecs-integration/
 
