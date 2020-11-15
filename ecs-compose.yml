@@ -1,12 +1,7 @@
 version: '3.4'
 services:
   wordpress:
-    env_file: default.env
-    build:
-      context: ./wordpress
-      args:
-        WP_VERSION: ${WP_VERSION}
-    image: ${REGISTRY_HOST}/${REGISTRY_PREFIX}/wordpress:${WP_VERSION}
+    image: ECR_WORDPRESS_IMAGE 
     depends_on:
       - mariadb
     environment:
@@ -22,12 +17,7 @@ services:
         awslogs-stream-prefix: wordpress
 
   mariadb:
-    env_file: default.env
-    build:
-      context: ./mariadb
-      args:
-        MARIA_VERSION: ${MARIA_VERSION}
-    image: ${REGISTRY_HOST}/${REGISTRY_PREFIX}/mariadb:${MARIA_VERSION}
+    image: ECR_MARIADB_IMAGE 
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=wordpress
