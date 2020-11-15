@@ -1,24 +1,5 @@
-#version: '3.4'
-#services:
-#  nginx: 
-#    image: nginx
-#    container_name: nginx
-#    ports:
-#      - 8000:80
-
 version: '3.4'
 services:
-  nginx:
-    env_file: default.env
-    build:
-      context: ./nginx
-      args:
-        NGINX_VERSION: ${NGINX_VERSION}
-    image: ${REGISTRY_HOST}/${REGISTRY_PREFIX}/nginx:${NGINX_VERSION} 
-    container_name: nginx
-    ports:
-      - 8000:80
-
   wordpress:
     env_file: default.env
     build:
