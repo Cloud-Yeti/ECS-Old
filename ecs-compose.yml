@@ -1,29 +1,21 @@
 version: '3.4'
 services:
   wordpress:
-    image: ECR_WORDPRESS_IMAGE 
+    image: 222385317864.dkr.ecr.us-east-1.amazonaws.com/cloudyeti/wordpress:5.5.0
     depends_on:
       - mariadb
     environment:
       - WORDPRESS_DB_HOST=mariadb:3306
       - WORDPRESS_DB_PASSWORD=password
+      - WAIT_HOSTS=mongo:3306
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_HOST_CONNECT_TIMEOUT=30
     ports:
-      - 80:80
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: wordpress
-        awslogs-region: us-east-1
-        awslogs-stream-prefix: wordpress
+      - "8080:8080"
 
   mariadb:
-    image: ECR_MARIADB_IMAGE 
+    image: 222385317864.dkr.ecr.us-east-1.amazonaws.com/cloudyeti/mariadb:latest 
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=wordpress
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: mariadb
-        awslogs-region: us-east-1
-        awslogs-stream-prefix: mariadb

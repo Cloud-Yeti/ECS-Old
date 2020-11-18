@@ -14,7 +14,13 @@ services:
       - WORDPRESS_DB_HOST=mariadb:3306
       - WORDPRESS_DB_PASSWORD=password
     ports:
-      - 80:80
+      - 8080:80
+    healthcheck:
+      test: curl --fail -s http://localhost:80/ || exit 1
+      start_period: 40s
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   mariadb:
     env_file: default.env
