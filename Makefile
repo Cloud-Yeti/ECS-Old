@@ -23,3 +23,10 @@ ifdef app
 else
 	docker-compose --env-file=$(env_file) down
 endif
+
+ecs-cluster-up:
+	docker compose --file ecs-compose.yml --project-name wordpress up
+
+ecs-cluster-down:
+	docker compose --file ecs-compose.yml --project-name wordpress down
+
