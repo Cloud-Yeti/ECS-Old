@@ -1,0 +1,6 @@
+version: '3.4'
+services:
+  nginx:
+    image: 222385317864.dkr.ecr.us-east-1.amazonaws.com/cloudyeti/nginx:1.17.0  
+    ports:
+      - "80:80"
