@@ -34,7 +34,7 @@
 #### Deploying Docker Containers on AWS
   * https://docs.docker.com/engine/context/ecs-integration/
 
-## Deploy Containers to AWS using Docker ECS Plugin
+## Deploy Containers to AWS using Docker ECS Plugin / Docker Compose CLI
   * Referral links: 
     * https://www.docker.com/blog/from-docker-straight-to-aws/
     * https://github.com/docker/compose-cli
