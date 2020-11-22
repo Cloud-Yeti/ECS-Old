@@ -39,7 +39,7 @@
     * https://www.docker.com/blog/from-docker-straight-to-aws/
     * https://github.com/docker/compose-cli
 
-  * First things first, go to this link https://docs.docker.com/engine/context/ecs-integration/#prerequisites and download the docker version that supports integration with ECS by clicking on Download for Mac or Download for Windows depending on your OS.
+  * First things first, go to this link https://docs.docker.com/engine/context/ecs-integration/#prerequisites and download the docker version that supports integration with ECS by clicking on Download for Mac or Download for Windows depending on your OS, and if you are using docker desktop, you can enable Compose CLI support on Docker Desktop which you can find on docker settings.
   * Second step is to, enable Amazon ECS ARN and resource ID settings for container instance, service and task and save it.
     * https://console.aws.amazon.com/ecs/home?region=us-east-1#/settings
   * Third step, create a new ecs context. See below:
